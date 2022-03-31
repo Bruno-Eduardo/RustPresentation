@@ -30,5 +30,17 @@ fn main() {
         println!("x = {}", x);
     }
     println!("x = {}", x);
+    // end of scope and shadowing commit
+
+    // closure example
+    let x = 5;
+    let add_ints = |y: i32| -> i32 { y + x };
+    println!("add_one = {}", add_ints(5));
+    {
+        let x = 95;
+        println!("x = {}", x);
+        println!("add_one = {}", add_ints(5));
+    }
+    
 
 }
