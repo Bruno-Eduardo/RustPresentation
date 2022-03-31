@@ -17,7 +17,18 @@ fn main() {
 
     //start an mutable unsigned int with value 0 and then decrement it
     let mut z: u32 = 0;
-    z = z - 1;
+    z = z + 1;
     println!("z = {}", z);
-    println!("This line will not be printed 😱");
+    //println!("This line will not be printed 😱");
+    // end of runtime panic commit
+
+    // scope and shadowing crashing example
+    let x = 5;
+
+    {
+        let x = x + 1;
+        println!("x = {}", x);
+    }
+    println!("x = {}", x);
+
 }
