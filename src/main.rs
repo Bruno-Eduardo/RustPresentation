@@ -41,6 +41,11 @@ fn main() {
         println!("x = {}", x);
         println!("add_one = {}", add_ints(5));
     }
-    
+    // end of closure commit
 
+    // example of ownership
+    let s = String::from("hello");
+    let z = s;
+    println!("z = {}", z);
+    println!("s = {}", s);
 }
