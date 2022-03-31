@@ -11,6 +11,13 @@ fn main() {
     // start a float with value 10.5
 
     let y: f64 = 10.5;
-    let sum = x + y;
+    let sum = f64::from(x) + y;
     println!("sum = {}", sum);
+    // end of adding int to float variable commit
+
+    //start an mutable unsigned int with value 0 and then decrement it
+    let mut z: u32 = 0;
+    z = z - 1;
+    println!("z = {}", z);
+    println!("This line will not be printed 😱");
 }
