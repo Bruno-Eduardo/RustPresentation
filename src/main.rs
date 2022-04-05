@@ -1,4 +1,8 @@
 //print hello world in rust
+
+use std::thread;
+use std::time;
+
 fn main() {
     // start a int with value 10
     let mut x = 10;
@@ -74,14 +78,33 @@ fn main() {
     // end of for iterator commit
 
     // example of function
-    let mut x = 5;
-    add_one_and_print(x);   // prints 6
-    println!("x = {}", x);  // prints 5
+    let mut x:i32 = 5;
+    add_one_and_print(&mut x);   // prints 6
+    println!("x = {}", x);  // prints 6
     x += 1;
-    println!("x = {}", x); // prints 6, no moved value error
+    println!("x = {}", x); // prints 7, no moved value error
+    // end of function commit, but is it thread safe?
+
+    // example of thread:
+    // starts x=0
+    // spawns a thread that increments x by 1 using add_one_and_print
+    // at main thread, increments x by 1 using add_one_and_print
+    // joins the thread
+    println!("-----");
+    let mut x:i32 = 0;
+    println!("x = {}", x);
+    let thread_handle = thread::spawn( || {
+        for _ in 0..100 {
+            add_one_and_print(&mut x);
+        }
+    });
+    for _ in 0..100 {
+        add_one_and_print(&mut x);
+    }
+    thread_handle.join().unwrap();
 }
 
-fn add_one_and_print(mut x: i32) {
-    x = x + 1;
+fn add_one_and_print(x: &mut i32) {
+    *x = *x + 1;
     println!("x = {}", x);
 }
