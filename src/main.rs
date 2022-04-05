@@ -45,7 +45,30 @@ fn main() {
 
     // example of ownership
     let s = String::from("hello");
-    let z = s;
+    let z = &s;
     println!("z = {}", z);
     println!("s = {}", s);
+    // end of ownership commit
+
+    // example of for iterator
+    let mut v = vec![1, 2, 3];
+    let v_size = 3; // v.len() is also valid, but would not crash
+    for i in 0..v_size {
+        println!("v[{}] = {}", i, v[i]);
+    }
+    v = vec![1, 2];
+    for i in 0..v_size {
+        println!("v[{}] = {}", i, v[i]); // this will crash at index 2 (third element)
+    }
+
+   /*  println!("-----");
+    let vector = vec![5, 6, 7, 8, 9, 10];
+    for element in vector {
+        println!("vector[?] = {}", element);
+    }
+    println!("-----");
+    let vector = vec![5, 6, 7, 8, 9, 10];
+    for (position, element) in vector.iter().enumerate() {
+        println!("v[{}] = {}", position, element);
+    } */
 }
