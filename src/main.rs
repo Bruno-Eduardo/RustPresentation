@@ -57,11 +57,11 @@ fn main() {
         println!("v[{}] = {}", i, v[i]);
     }
     v = vec![1, 2];
-    for i in 0..v_size {
+    for i in 0..v_size - 1{
         println!("v[{}] = {}", i, v[i]); // this will crash at index 2 (third element)
     }
 
-   /*  println!("-----");
+    println!("-----");
     let vector = vec![5, 6, 7, 8, 9, 10];
     for element in vector {
         println!("vector[?] = {}", element);
@@ -70,5 +70,18 @@ fn main() {
     let vector = vec![5, 6, 7, 8, 9, 10];
     for (position, element) in vector.iter().enumerate() {
         println!("v[{}] = {}", position, element);
-    } */
+    }
+    // end of for iterator commit
+
+    // example of function
+    let mut x = 5;
+    add_one_and_print(x);   // prints 6
+    println!("x = {}", x);  // prints 5
+    x += 1;
+    println!("x = {}", x); // prints 6, no moved value error
+}
+
+fn add_one_and_print(mut x: i32) {
+    x = x + 1;
+    println!("x = {}", x);
 }
